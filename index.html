@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augustina Edemekaye - Senior Salesforce Administrator Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles & Typography */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333333; /* Dark gray for main text */
+            background-color: #F8F8F8; /* Soft, clean off-white background */
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+            scroll-padding-top: 50px; /* Adjusted offset for sticky header */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #005664; /* Darker teal-blue for headings */
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center; /* Centered in header */
+            margin-bottom: 0; /* Adjusted for subtitle positioning */
+            color: #FFFFFF; /* White for header name */
+        }
+
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #007B8D; /* Modern teal-blue accent */
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #007B8D; /* Modern teal-blue for links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #003366; /* Darker navy on hover */
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #005664; /* Matching Core Skills text color */
+            color: #FFFFFF; /* White text */
+            padding: 8px 0; /* Reduced padding for compact height (approx 20% reduction from 10px) */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column; /* Stack name/title and nav */
+            align-items: center; /* Center all contents */
+            transition: padding 0.3s ease;
+        }
+
+        header .container {
+            display: flex;
+            flex-direction: column; /* Stack header content and nav */
+            align-items: center; /* Center everything horizontally */
+            width: 100%; /* Ensure container takes full width for centering */
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column; /* Stack name and title */
+            align-items: center; /* Center name and title */
+            margin-bottom: 6px; /* Space between title and nav */
+        }
+        
+        /* Removed .profile-photo-header styles as it's not in the header anymore */
+
+        header p {
+            font-size: 1em; /* Increased font size for job title */
+            margin-top: 2px; /* Consistent space between name and title */
+            opacity: 0.9;
+            color: #FFFFFF; /* White for header text */
+            text-align: center; /* Center the subtitle as well */
+        }
+
+        header nav {
+            width: 100%; /* Nav takes full width to allow centering */
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Center the navigation links */
+            flex-wrap: wrap;
+        }
+
+        header nav ul li {
+            margin: 0 16px; /* Consistent margin for compactness */
+        }
+
+        header nav ul li a {
+            color: #FFFFFF;
+            font-weight: 700;
+            padding: 5px 10px; /* Consistent padding for compact height */
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header nav ul li a:hover,
+        header nav ul li a.active {
+            background-color: #ADD8E6; /* New light blue for hover/active */
+            color: #005664; /* Darker teal-blue text on hover */
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-toggle {
+            display: none; /* Hidden by default on larger screens */
+            font-size: 2em;
+            color: #FFFFFF;
+            cursor: pointer;
+            z-index: 1001; /* Ensure it's above nav links when open */
+        }
+
+        /* Hero Section (About Me) */
+        .hero {
+            background: linear-gradient(135deg, #F8F8F8 0%, #E6E6E6 100%); /* Light, professional gradient */
+            padding: 10px 0 100px 0; /* Reduced top padding by 90% (from 100px to 10px) */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex; /* Kept as flex to help center hero-content */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* Removed gap as image is now inside hero-text */
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .profile-photo { /* Re-added for about me section and adjusted for new position */
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid #007B8D; /* Reduced border thickness by 50% */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeInScale 1.2s ease-out forwards;
+            margin-bottom: 30px; /* Space between photo and heading */
+            display: block; /* Ensures margin auto works */
+            margin-left: auto; /* Centers the image within hero-text */
+            margin-right: auto; /* Centers the image within hero-text */
+        }
+
+        .hero-text {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+            z-index: 1; /* Ensure text is above any background effects */
+        }
+        .hero-text h2 {
+            text-align: left; /* Keep h2 text aligned left */
+            margin-bottom: 20px;
+            margin-top: 0; /* Remove top margin as image provides spacing */
+        }
+        .hero-text h2::after {
+            left: 0;
+            transform: translateX(0);
+        }
+
+        /* Fancy Bullet Points for About Me Certifications */
+        .certification-list {
+            list-style: none; /* Remove default bullet points */
+            padding: 0;
+            margin-top: 20px; /* Space from the paragraph above */
+        }
+
+        .certification-list li {
+            position: relative;
+            padding-left: 30px; /* Space for the custom icon */
+            margin-bottom: 10px;
+            font-size: 1.05em;
+            color: #333333; /* Darker text for certifications */
+            font-weight: 500;
+        }
+
+        .certification-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .certification-list li::before {
+            content: "\f058"; /* Font Awesome check-circle-solid icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900; /* For solid icon */
+            position: absolute;
+            left: 0;
+            top: 2px; /* Adjust vertical alignment */
+            color: #007B8D; /* Teal-blue icon color */
+            font-size: 1.2em;
+        }
+
+
+        /* General Section Styling */
+        section {
+            padding: 80px 0;
+            background-color: #FFFFFF;
+            margin: 40px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section:nth-of-type(even) {
+            background-color: #F8F8F8; /* Consistent light gray for variation */
+        }
+
+        /* Skills Section */
+        .skills-section .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding-top: 30px;
+        }
+
+        .skill-item {
+            background-color: #ffffff;
+            border: 1px solid #E0E0E0;
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid #007B8D; /* Bottom border accent */
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 123, 141, 0.05), rgba(0, 123, 141, 0.00));
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s ease-out;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .skill-icon {
+            font-size: 3.5em;
+            color: #007B8D; /* Modern teal-blue icon */
+            margin-bottom: 20px;
+        }
+
+        .skill-item h3 {
+            font-size: 1.5em;
+            color: #005664; /* Darker teal-blue for skill titles */
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            padding-top: 30px;
+        }
+
+        .portfolio-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            border-bottom: 5px solid #007B8D; /* Bottom border accent */
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: linear-gradient(45deg, #007B8D, #00A9BE); /* Teal-blue gradient for hover effect */
+            z-index: -1;
+            border-radius: 18px;
+            opacity: 0;
+            filter: blur(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.98);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-card:hover::before {
+            opacity: 0.8;
+            transform: scale(1);
+        }
+
+        /* Removed image container for projects */
+        .card-image-container {
+            display: none;
+        }
+
+        .card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .portfolio-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+            color: #005664;
+        }
+
+        .portfolio-card p {
+            font-size: 0.98em;
+            color: #555555;
+            flex-grow: 1; /* Allows description to take available space */
+        }
+
+        .project-tags {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.8em;
+        }
+
+        .project-tags span {
+            background-color: #E0F2F4; /* Lighter background for tags */
+            color: #333333; /* Darker text for tags */
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            border: 1px solid #C0E8EC;
+        }
+
+        .view-more {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #555555;
+        }
+
+        .view-more a {
+            color: #007B8D;
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .view-more a:hover {
+            color: #003366;
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-links {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: #007B8D; /* Modern teal-blue button */
+            color: #FFFFFF;
+            padding: 15px 30px;
+            border-radius: 35px;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-link i {
+            margin-right: 12px;
+            font-size: 1.4em;
+        }
+
+        .contact-link:hover {
+            background-color: #00A9BE; /* Lighter teal-blue on hover for better visibility */
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 60px auto 0;
+            background-color: #FFFFFF;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h3 {
+            text-align: center;
+            color: #005664;
+            margin-bottom: 35px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #333333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: calc(100% - 24px); /* Account for padding */
+            padding: 12px;
+            border: 1px solid #A9A9A9; /* Clearly visible border */
+            border-radius: 8px;
+            font-size: 1.1em;
+            color: #333333;
+            background-color: #FFFFFF; /* White background */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus {
+            border-color: #007B8D; /* Modern teal-blue on focus */
+            box-shadow: 0 0 0 4px rgba(0, 123, 141, 0.2);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn {
+            background-color: #007B8D;
+            color: #FFFFFF;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 35px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: #003366;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #005664; /* Matching Core Skills text color */
+            color: #FFFFFF;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 80px;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                gap: 30px;
+            }
+            .hero-text {
+                padding: 30px;
+            }
+            .skills-grid, .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
+            header .container {
+                /* On smaller screens, keep content and nav stacked and centered */
+                flex-direction: column;
+                align-items: center;
+            }
+            header nav {
+                margin-top: 15px; /* Adjust margin for nav below title */
+            }
+            header nav ul {
+                flex-direction: row; /* Keep nav links horizontal if space allows */
+                justify-content: center;
+            }
+            header nav ul li {
+                margin: 0 10px; /* Adjust horizontal margin for compactness */
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            h3 {
+                font-size: 1.5em;
+            }
+            .hero {
+                padding: 80px 0;
+            }
+            .profile-photo {
+                width: 180px; /* Slightly smaller for mobile */
+                height: 180px;
+                margin-bottom: 25px; /* Adjust spacing for mobile */
+            }
+            section {
+                padding: 50px 0;
+                margin: 25px auto;
+            }
+
+            /* Mobile Navigation (Hamburger Menu) */
+            header .container {
+                /* Ensure toggle and header content are horizontally aligned until menu opens */
+                flex-direction: row; /* Keep row direction for main items (toggle, header-content) */
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap; /* Allows nav to wrap below */
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .header-content {
+                flex-grow: 1; /* Allows header content to take available space */
+                align-items: flex-start; /* Align text left when toggle is present */
+                margin-bottom: 0; /* No bottom margin here */
+            }
+            header h1, header p {
+                text-align: left; /* Align text left when header-content is flex-start */
+            }
+
+            header nav {
+                width: 100%;
+                order: 2; /* Puts nav below title/toggle on small screens */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+                opacity: 0;
+                flex-basis: 100%;
+                background-color: #005664; /* Ensure menu background matches header */
+                padding-bottom: 10px;
+                margin-top: 15px; /* Space from header content/toggle */
+            }
+            header nav.nav-open {
+                max-height: 250px; /* Adjust based on number of links */
+                opacity: 1;
+            }
+            header nav ul {
+                flex-direction: column; /* Stack nav links vertically when menu is open */
+                align-items: center;
+            }
+            header nav ul li {
+                margin: 8px 0; /* Vertical margin for stacked links */
+            }
+            .menu-toggle {
+                display: block;
+                position: static;
+                margin-left: auto; /* Push to the right */
+            }
+            .contact-links {
+                flex-direction: column;
+            }
+            .contact-form {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 20px; /* Adjust spacing for smaller screens */
+            }
+            .hero-text {
+                padding: 25px;
+            }
+            .skills-grid, .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .skill-item, .portfolio-card {
+                padding: 25px;
+            }
+            .contact-link {
+                width: 80%; /* Make contact links wider */
+                justify-content: center;
+            }
+            .contact-form {
+                padding: 25px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Augustina Edemekaye</h1>
+                <p>Senior Salesforce Administrator & Healthcare Specialist</p>
+            </div>
+            <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#skills">My Core Skills</a></li>
+                    <li><a href="#portfolio">Portfolio Projects</a></li>
+                    <li><a href="#contact">Get In Touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <img src="https://via.placeholder.com/220/007B8D/FFFFFF?text=Augustina" alt="Augustina Edemekaye" class="profile-photo">
+                        <h2>About Me</h2>
+                        <p style='text-align:justify';>I am a dedicated Salesforce Administrator with over 5 years of extensive experience in the healthcare sector. My journey from Medical Lab Attendant to Laboratory Support at Public Health Ontario Laboratories (PHOL) has ingrained in me a deep understanding of data integrity, efficient workflows, and critical communication within regulated environments. This background allows me to approach Salesforce solutions not just from a technical perspective, but with a practical understanding of how they impact real-world operations, especially in healthcare.</p>
+                        <p style='text-align:justify';>I'm passionate about leveraging the power of Salesforce to streamline processes, enhance patient experiences, and drive measurable efficiency. Whether it's configuring intricate automations, managing complex data, or ensuring robust security, my goal is always to deliver user-friendly, compliant, and impactful CRM solutions.</p>
+                        
+                        <p>My expertise is backed by the following certifications:</p>
+                        <ul class="certification-list">
+                            <li>Salesforce Administrator</li>
+                            <li>Salesforce Service Cloud Consultant</li>
+                            <li>Salesforce Sales Cloud Consultant</li>
+                            <li>Salesforce Agentforce Specialist</li>
+                            <li>Salesforce Health Cloud (Coming Soon!)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2>My Core Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-cogs skill-icon"></i>
+                        <h3>Automation & Process Optimization</h3>
+                        <p>Designing and implementing efficient Salesforce flows, process builders, and approval processes to automate complex healthcare workflows and reduce manual effort.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database skill-icon"></i>
+                        <h3>Data Management & Analytics</h3>
+                        <p>Ensuring data integrity, creating robust data models, and leveraging reports and dashboards for insightful analysis of healthcare data.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-link skill-icon"></i>
+                        <h3>Integration</h3>
+                        <p>Understanding and facilitating seamless integration between Salesforce and other critical healthcare systems for unified data flow.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-users-gear skill-icon"></i>
+                        <h3>Change Management & User Adoption</h3>
+                        <p>Guiding users through system changes, providing comprehensive training, and ensuring high adoption rates for new Salesforce implementations within healthcare settings.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-shield-alt skill-icon"></i>
+                        <h3>Security & Compliance</h3>
+                        <p>Implementing robust security models (profiles, permission sets, OWDs) and ensuring adherence to healthcare industry regulations (e.g., PHIPA, HIPAA, GDPR).</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-chart-line skill-icon"></i>
+                        <h3>Reports & Dashboards</h3>
+                        <p>Creating intuitive and actionable Salesforce reports and dashboards to provide real-time insights into key performance indicators for healthcare management.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-vial skill-icon"></i>
+                        <h3>Testing & Deployment</h3>
+                        <p>Rigorously testing new functionalities and managing seamless deployments to ensure system stability and reliability in critical healthcare environments.</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-lightbulb skill-icon"></i>
+                        <h3>Problem Solving & Troubleshooting</h3>
+                        <p>Diagnosing and resolving complex Salesforce issues efficiently, minimizing disruption and optimizing system performance for healthcare users.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio-section">
+            <div class="container">
+                <h2>My Portfolio Projects</h2>
+                <div class="portfolio-grid">
+                    <a href="YOUR_GITHUB_PROJECT_LINK_1" class="portfolio-card" target="_blank" rel="noopener noreferrer">
+                        <div class="card-content">
+                            <h3>Healthcare Patient Onboarding Flow</h3>
+                            <p>Designed and implemented a Salesforce Flow to automate patient onboarding, including data collection, consent forms, and appointment scheduling, significantly reducing administrative overhead and improving data accuracy.</p>
+                            <div class="project-tags">
+                                <span>#SalesforceFlow</span><span>#ServiceCloud</span><span>#Automation</span><span>#Healthcare</span><span>#DataValidation</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="YOUR_GITHUB_PROJECT_LINK_2" class="portfolio-card" target="_blank" rel="noopener noreferrer">
+                        <div class="card-content">
+                            <h3>Lab Result Notification System</h3>
+                            <p>Developed custom reports and dashboards in Salesforce to track laboratory specimen progress and created automated email notifications for physicians and facilities on result availability and turnaround times, enhancing communication efficiency.</p>
+                            <div class="project-tags">
+                                <span>#ReportsDashboards</span><span>#DataManagement</span><span>#EmailAutomation</span><span>#PublicHealth</span><span>#Analytics</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="YOUR_GITHUB_PROJECT_LINK_3" class="portfolio-card" target="_blank" rel="noopener noreferrer">
+                        <div class="card-content">
+                            <h3>Secure Patient Inquiry Portal (Mock)</h3>
+                            <p>Conceptualized and designed a secure patient inquiry portal using Salesforce Experience Cloud concepts, demonstrating secure data access and case management for patient requests, aligning with PHIPA compliance and improving patient self-service.</p>
+                            <div class="project-tags">
+                                <span>#ExperienceCloud</span><span>#Security</span><span>#Compliance</span><span>#CustomerService</span><span>#Mockup</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="YOUR_GITHUB_PROJECT_LINK_4" class="portfolio-card" target="_blank" rel="noopener noreferrer">
+                        <div class="card-content">
+                            <h3>Salesforce Health Cloud Customization</h3>
+                            <p>Demonstrated a proof-of-concept for customizing Health Cloud objects and processes to manage patient care plans, inter-departmental referrals, and appointment scheduling within a hospital setting, enhancing care coordination.</p>
+                            <div class="project-tags">
+                                <span>#HealthCloud</span><span>#Customization</span><span>#CareManagement</span><span>#Integration</span><span>#CRM</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    </div>
+                <p class="view-more">More projects are in the pipeline! For detailed code, documentation, and further insights, please visit my <a href="YOUR_GITHUB_PROFILE_URL" target="_blank" rel="noopener noreferrer">GitHub profile</a>.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>I'm always open to discussing new opportunities, collaborations, or how my combined healthcare and Salesforce expertise can benefit your organization. Feel free to reach out!</p>
+                <div class="contact-links">
+                    <a href="mailto:youremail@example.com" class="contact-link"><i class="fas fa-envelope"></i> Email Me</a>
+                    <a href="YOUR_LINKEDIN_PROFILE_URL" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="YOUR_GITHUB_PROFILE_URL" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+                <form class="contact-form" action="YOUR_FORM_SUBMISSION_ENDPOINT" method="POST">
+                    <h3>Send me a message:</h3>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project or inquiry..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Augustina Edemekaye. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // JavaScript for mobile menu toggle (Hamburger Menu)
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('nav-open');
+            // Toggle icon between bars and 'X'
+            if (mainNav.classList.contains('nav-open')) {
+                menuToggle.classList.remove('fa-bars');
+                menuToggle.classList.add('fa-times');
+            } else {
+                menuToggle.classList.remove('fa-times');
+                menuToggle.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a navigation link is clicked
+        const navLinks = document.querySelectorAll('#mainNav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('nav-open')) {
+                    mainNav.classList.remove('nav-open');
+                    menuToggle.classList.remove('fa-times');
+                    menuToggle.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // JavaScript for highlighting active navigation link on scroll
+        const sections = document.querySelectorAll('section[id]'); // Select sections with an ID
+        const navItems = document.querySelectorAll('header nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let currentActiveSectionId = '';
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                // Get the top and bottom position of the section relative to the viewport
+                const sectionRect = section.getBoundingClientRect();
+                const sectionTop = sectionRect.top + window.pageYOffset;
+                const sectionBottom = sectionRect.bottom + window.pageYOffset;
+
+                // Adjusted offset for activation to be slightly higher,
+                // considering the fixed header height
+                const activationOffset = 180; // Adjusted from 150
+
+                if (scrollY >= sectionTop - activationOffset && scrollY < sectionBottom - activationOffset) {
+                    currentActiveSectionId = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(currentActiveSectionId) && currentActiveSectionId !== '') {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
